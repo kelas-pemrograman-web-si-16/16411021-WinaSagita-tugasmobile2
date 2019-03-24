@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,12 +28,16 @@ public class MainActivity extends AppCompatActivity {
                 String NPM = edtnpm.getText().toString();
                 String NAMA = edtnama.getText().toString();
 
-                Intent a = new Intent(MainActivity.this, Main2Activity.class);
+                Intent a = null;
 
-                a.putExtra("npm", NPM);
-                a.putExtra("nama", NAMA);
-                startActivity(a);
-                finish();
+                if (NAMA.equals("wina sagita")  && NPM.equals("16411021")){
+                    a = new Intent(MainActivity.this, Main2Activity.class);
+                    a.putExtra("nama", edtnama.getText().toString());
+                    a.putExtra("npm", edtnpm.getText().toString());
+                    startActivity(a);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Maaf Inputan Salah", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
